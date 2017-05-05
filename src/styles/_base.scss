@@ -13,14 +13,17 @@ html {
 body {
   font-family: $font-sans;
 }
+
 #custom-sentence {
   padding: 1em;
-  background-color: #CCC;
+  background-color: #ccc;
   font-size: 1.5em;
 }
+
 #article-count {
   text-align: center;
 }
+
 #tags {
   font-family: monaco;
   line-height: 1.1em;
@@ -31,14 +34,17 @@ body {
   bottom: 0;
   background-color: white;
 }
+
 #tags h4 {
   margin: 0;
   padding: 0;
   line-height: 1.2em;
 }
+
 #cover-walkthrough {
   max-width: 420px;
 }
+
 #cover-walkthrough button {
   display: block;
   padding: 1em;
@@ -49,9 +55,18 @@ body {
   margin-bottom: 90px;
 }
 
-.question-step h2:after {
-  content: "..."
+.question-step {
+  display: none;
 }
-.question-step td{
+
+.is-active {
+  display: block;
+}
+
+.question-step h2:after {
+  content: "...";
+}
+
+.question-step td {
   width: 200px;
 }

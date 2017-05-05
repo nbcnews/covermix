@@ -1,4 +1,7 @@
 var articles;
+var $firstQuestionStep = $('.question-step:first-of-type')
+
+$firstQuestionStep.addClass('is-active')
 
 Tabletop.init( { key: 'https://docs.google.com/spreadsheets/d/1B2CVh-akXsNCnyP8UK3wMIwJEAFAAQqqnWI3XSlxRME/pubhtml',
                    callback: function(data, tabletop) {
@@ -22,6 +25,10 @@ $('.question-step button').on('click', function(){
   //var title = $('h2', questionStep).text();
   var selectedButtonText = el.text();
   var selectedTags = el.attr('data-target-tags')
+
+  questionParent.removeClass('is-active')
+  questionParent.next().addClass('is-active')
+
 
   $('#custom-sentence').append('<p>'+title + ' ' + selectedButtonText.toLowerCase()+'</p>')
 
