@@ -1,5 +1,19 @@
 var articles;
 
+Tabletop.init( { key: 'https://docs.google.com/spreadsheets/d/1B2CVh-akXsNCnyP8UK3wMIwJEAFAAQqqnWI3XSlxRME/pubhtml',
+                   callback: function(data, tabletop) {
+                       articles = data
+
+                       articles.forEach(function(article,i){
+                         var articleTagString = article.tags
+                         var articleTagArray = article.tags.split(' ')
+                         articles[i].tags = articleTagArray
+                       })
+
+                      console.log('articles', articles)
+                   },
+                   simpleSheet: true } )
+
 $('.question-step button').on('click', function(){
   var el = $(this)
   var questionParent = el.parents('.question-step')
@@ -16,12 +30,14 @@ $('.question-step button').on('click', function(){
   questionParent.find('button').attr('disabled','disabled');
 
   var taggedArticles = findTaggedArticles(selectedTags);
+  articles = taggedArticles;
 
-  $('#relevant-articles').append('<code>'+JSON.stringify(taggedArticles)+'</code>')
+  $('#relevant-articles').append('<code>'+JSON.stringify(articles)+'</code>')
 
   $('#article-count').text(taggedArticles.length + ' relevant articles')
 })
 
+/*
 articles = [
   {
     title: "Cat Bites Dog"
@@ -36,6 +52,7 @@ articles = [
     ,tags: ['60m+', 'cute', 'notrump']
   }
 ]
+*/
 
 function findTaggedArticles(tag) {
   var relevantArticles = []
