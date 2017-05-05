@@ -1,2 +1,2 @@
-# covermix
+# oncover
 Mic Editors Lab Hackathon
