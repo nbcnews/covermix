@@ -13,3 +13,34 @@ html {
 body {
   font-family: $font-sans;
 }
+
+#tags {
+  font-family: monaco;
+  line-height: 1.1em;
+  width: 100%;
+  padding: 0.5em;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  background-color: white;
+}
+
+#tags h4 {
+  margin: 0;
+  padding: 0;
+  line-height: 1.2em;
+}
+
+#cover-walkthrough {
+  max-width: 420px;
+}
+
+#cover-walkthrough button {
+  display: block;
+  padding: 1em;
+  width: 100%;
+}
+
+.question-step td {
+  width: 200px;
+}
