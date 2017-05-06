@@ -35,7 +35,7 @@ Tabletop.init( { key: 'https://docs.google.com/spreadsheets/d/1B2CVh-akXsNCnyP8U
      $exampleLink.attr('href', exampleArticle.URL)
      $exampleLink.text(exampleArticle.Title)
 
-     console.log('exampleLink', $exampleLink)
+     //console.log('exampleLink', $exampleLink)
    })
  }
 
@@ -52,28 +52,33 @@ $('.question-step button').on('click', function(){
   questionParent.next().addClass('is-active')
 
 
-  $('#custom-sentence').append('<p>'+title + ' ' + selectedButtonText.toLowerCase()+'</p>')
+  $('#custom-sentence').append('<p>'+title + ' <strong>' + selectedButtonText.toLowerCase()+'</strong>. </p>')
 
   $('#tags').append(selectedTags + ' + ')
 
   questionParent.find('button').attr('disabled','disabled')
   var taggedArticles = findTaggedArticles(selectedTags)
-  articles = taggedArticles;
+  if(taggedArticles.length !== 0) {
+    articles = taggedArticles;
 
-  //$('#relevant-articles').append('<code>'+JSON.stringify(articles)+'</code>')
+    //$('#relevant-articles').append('<code>'+JSON.stringify(articles)+'</code>')
 
-  var articleList = d3.select('#relevant-articles')
+    var articleList = d3.select('#relevant-articles')
 
-  articleList.html('')
+    articleList.html('')
 
-  var articleEnter = articleList.selectAll('li')
-    .data(articles)
-    .enter().append('li')
-    .html(function(d){
-      return '<a href="' + d.URL + '">' + d.Title + '</a> <small style="color: #CCC">' + JSON.stringify(d.tags) + '</small>';
-    })
+    var articleEnter = articleList.selectAll('li')
+      .data(articles)
+      .enter().append('li')
+      .html(function(d){
+        return '<a href="' + d.URL + '">' + d.Title + '</a> <small style="color: #CCC">' + JSON.stringify(d.tags) + '</small>';
+      })
 
-  $articleCount.text('There are ' + taggedArticles.length + ' stories at your fingertips.')
+    $articleCount.text('There are ' + taggedArticles.length + ' stories at your fingertips.')
+  }
+  else {
+    el.attr('disabled', 'disabled')
+  }
 })
 
 

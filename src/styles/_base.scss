@@ -80,6 +80,12 @@ a {
 
 .question-step {
   display: none;
+  margin: 1em 0;
+
+  h2 {
+    font-size: 1.3em;
+    margin: 1em 0;
+  }
 }
 
 .is-active {
