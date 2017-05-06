@@ -42,6 +42,7 @@ Tabletop.init( { key: 'https://docs.google.com/spreadsheets/d/1B2CVh-akXsNCnyP8U
      else {
        $exampleLink.attr('href', exampleArticle.URL)
        $exampleLink.text(exampleArticle.Title)
+       $exampleLink.attr('title', 'And '+taggedArticles.length+' more')
      }
 
      //console.log('exampleLink', $exampleLink)
@@ -77,7 +78,7 @@ $('.question-step button').on('click', function(){
     console.log('next questionParent', questionParent.next())
 
     makeExamples()
-    $articleCount.text('There are ' + taggedArticles.length + ' stories at your fingertips.')
+    $articleCount.html('<p>There are ' + taggedArticles.length + ' stories at your fingertips.</p>')
   }
   else {
     el.attr('disabled', 'disabled')
