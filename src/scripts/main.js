@@ -53,14 +53,15 @@ $('.question-step button').on('click', function(){
   var selectedButtonText = el.text();
   var selectedTags = el.attr('data-target-tags')
 
-  $('#custom-sentence').append('<p>'+title + ' <strong>' + selectedButtonText.toLowerCase()+'</strong>. </p>')
 
-  $('#tags').append(selectedTags + ' + ')
-
-  questionParent.find('button').attr('disabled','disabled')
   var taggedArticles = findTaggedArticles(selectedTags)
   if(taggedArticles.length !== 0) {
     articles = taggedArticles;
+
+    // This is useful if you want to show all the questions at once
+    //questionParent.find('button').attr('disabled','disabled')
+    $('#tags').append(selectedTags + ' + ')
+    $('#custom-sentence').append('<p>'+title + ' <strong>' + selectedButtonText.toLowerCase()+'</strong>. </p>')
 
     questionParent.removeClass('is-active')
     questionParent.next().addClass('is-active')
