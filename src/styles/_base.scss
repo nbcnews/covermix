@@ -147,4 +147,10 @@ a {
   float: right;
   border: 1px solid $almost-white;
   background-color: transparent;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $blue;
+    color: #fff;
+  }
 }
