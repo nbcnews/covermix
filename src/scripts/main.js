@@ -30,11 +30,14 @@ Tabletop.init( { key: 'https://docs.google.com/spreadsheets/d/1B2CVh-akXsNCnyP8U
      $el = $(this)
      var buttonTag = $el.attr('data-target-tags')
      $exampleLink = $el.parent().parent().find('a')
+     var taggedArticles = findTaggedArticles(buttonTag)
 
-     var exampleArticle = findTaggedArticles(buttonTag)[0]
+     var exampleArticle = taggedArticles[Math.floor(Math.random()*taggedArticles.length)];
+
      if(exampleArticle == undefined) {
        $exampleLink.attr('href', '#')
        $exampleLink.text('')
+       $el.parent().find('button').attr('disabled', 'disabled')
      }
      else {
        $exampleLink.attr('href', exampleArticle.URL)
