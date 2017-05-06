@@ -67,16 +67,20 @@ $('.question-step button').on('click', function(){
 
     //$('#relevant-articles').append('<code>'+JSON.stringify(articles)+'</code>')
 
-    var articleList = d3.select('#relevant-articles')
+    //////////////////////////
+    // Article List Debug
 
-    articleList.html('')
-
-    var articleEnter = articleList.selectAll('li')
-      .data(articles)
-      .enter().append('li')
-      .html(function(d){
-        return '<a href="' + d.URL + '">' + d.Title + '</a> <small style="color: #CCC">' + JSON.stringify(d.tags) + '</small>';
-      })
+    // var articleList = d3.select('#relevant-articles')
+    //
+    // articleList.html('')
+    //
+    // var articleEnter = articleList.selectAll('li')
+    //   .data(articles)
+    //   .enter().append('li')
+    //   .html(function(d){
+    //     return '<a href="' + d.URL + '">' + d.Title + '</a> <small style="color: #CCC">' + JSON.stringify(d.tags) + '</small>';
+    // })
+    //////////////////////////
 
     makeExamples()
     $articleCount.text('There are ' + taggedArticles.length + ' stories at your fingertips.')
