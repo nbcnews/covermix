@@ -70,22 +70,11 @@ $('.question-step button').on('click', function(){
     questionParent.removeClass('is-active')
     questionParent.next().addClass('is-active')
 
-    //$('#relevant-articles').append('<code>'+JSON.stringify(articles)+'</code>')
+    if(!questionParent.next().hasClass('question-step')) {
+      makeArticleList()
+    }
 
-    //////////////////////////
-    // Article List Debug
-
-    // var articleList = d3.select('#relevant-articles')
-    //
-    // articleList.html('')
-    //
-    // var articleEnter = articleList.selectAll('li')
-    //   .data(articles)
-    //   .enter().append('li')
-    //   .html(function(d){
-    //     return '<a href="' + d.URL + '">' + d.Title + '</a> <small style="color: #CCC">' + JSON.stringify(d.tags) + '</small>';
-    // })
-    //////////////////////////
+    console.log('next questionParent', questionParent.next())
 
     makeExamples()
     $articleCount.text('There are ' + taggedArticles.length + ' stories at your fingertips.')
@@ -95,6 +84,17 @@ $('.question-step button').on('click', function(){
   }
 })
 
+function makeArticleList() {
+  var articleList = d3.select('#relevant-articles')
+  articleList.html('')
+
+  var articleEnter = articleList.selectAll('li')
+    .data(articles)
+    .enter().append('li')
+    .html(function(d){
+      return '<a href="' + d.URL + '">' + d.Title + '</a> <small style="color: #CCC; display: none;">' + JSON.stringify(d.tags) + '</small>';
+  })
+}
 
 /*
 articles = [
