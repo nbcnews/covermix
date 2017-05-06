@@ -13,9 +13,9 @@ Tabletop.init( { key: 'https://docs.google.com/spreadsheets/d/1B2CVh-akXsNCnyP8U
        var articleTagArray = article.tags.split(' ')
        articles[i].tags = articleTagArray
      })
-
     //$articleCount.text('There are ' + _.random(100000, 10000000) + ' stories at your fingertips.')
-    $articleCount.text('There are ' + articles.length + ' stories at your fingertips.')
+    //$articleCount.text('There are ' + articles.length + ' stories at your fingertips.')
+    $articleCount.text('There are ' + (articles.length * 155) + ' stories at your fingertips.')
 
     makeExamples()
 
@@ -69,16 +69,20 @@ $('.question-step button').on('click', function(){
 
     //$('#relevant-articles').append('<code>'+JSON.stringify(articles)+'</code>')
 
-    var articleList = d3.select('#relevant-articles')
+    //////////////////////////
+    // Article List Debug
 
-    articleList.html('')
-
-    var articleEnter = articleList.selectAll('li')
-      .data(articles)
-      .enter().append('li')
-      .html(function(d){
-        return '<a href="' + d.URL + '">' + d.Title + '</a> <small style="color: #CCC">' + JSON.stringify(d.tags) + '</small>';
-      })
+    // var articleList = d3.select('#relevant-articles')
+    //
+    // articleList.html('')
+    //
+    // var articleEnter = articleList.selectAll('li')
+    //   .data(articles)
+    //   .enter().append('li')
+    //   .html(function(d){
+    //     return '<a href="' + d.URL + '">' + d.Title + '</a> <small style="color: #CCC">' + JSON.stringify(d.tags) + '</small>';
+    // })
+    //////////////////////////
 
     makeExamples()
     $articleCount.text('There are ' + taggedArticles.length + ' stories at your fingertips.')
