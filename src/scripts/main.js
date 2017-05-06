@@ -47,6 +47,7 @@ Tabletop.init( { key: 'https://docs.google.com/spreadsheets/d/1B2CVh-akXsNCnyP8U
      }
      else {
        $exampleLink.attr('href', exampleArticle.URL)
+        $exampleLink.attr('target', '_blank')
        $exampleLink.text(exampleArticle.Title)
      }
 
