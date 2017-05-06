@@ -13,10 +13,31 @@ Tabletop.init( { key: 'https://docs.google.com/spreadsheets/d/1B2CVh-akXsNCnyP8U
        var articleTagArray = article.tags.split(' ')
        articles[i].tags = articleTagArray
      })
+
     $articleCount.text('There are ' + articles.length + ' stories at your fingertips.')
+
+    makeExamples()
+
+    $('body').show(400)
+
     console.log('articles', articles)
  },
  simpleSheet: true } )
+
+ function makeExamples() {
+   $('.question-step button').each(function(){
+     $el = $(this)
+     var buttonTag = $el.attr('data-target-tags')
+     $exampleLink = $el.parent().parent().find('a')
+
+     var exampleArticle = findTaggedArticles(buttonTag)[0]
+
+     $exampleLink.attr('href', exampleArticle.URL)
+     $exampleLink.text(exampleArticle.Title)
+
+     console.log('exampleLink', $exampleLink)
+   })
+ }
 
 $('.question-step button').on('click', function(){
   var el = $(this)
