@@ -39,7 +39,18 @@ $('.question-step button').on('click', function(){
   var taggedArticles = findTaggedArticles(selectedTags);
   articles = taggedArticles;
 
-  $('#relevant-articles').append('<code>'+JSON.stringify(articles)+'</code>')
+  //$('#relevant-articles').append('<code>'+JSON.stringify(articles)+'</code>')
+
+  var articleList = d3.select('#relevant-articles')
+
+  articleList.html('')
+
+  var articleEnter = articleList.selectAll('li')
+    .data(articles)
+    .enter().append('li')
+    .html(function(d){
+      return '<a href="' + d.URL + '">' + d.Title + '</a> <small style="color: #CCC">' + JSON.stringify(d.tags) + '</small>';
+    })
 
   $('#article-count').text(taggedArticles.length + ' relevant articles')
 })
