@@ -8,7 +8,7 @@
         function iframeResize() {
             var height = $('body').height();
             var location = document.location.href;
-            window.parent.postMessage(["setHeight", height, location], "*");
+            window.parent.postMessage(["setHeight", height + 20, location], "*");
         }
 
       $('.question-step button').on('click', function(){

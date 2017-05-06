@@ -1,9 +1,8 @@
 $( document ).ready(function() {
 var articles;
-var $firstQuestionStep = $('.question-step:first-of-type')
+var $firstQuestionStep = $('.question-step.is-first')
 var $articleCount = $('#article-count')
-
-$firstQuestionStep.addClass('is-active')
+var $loadingSequence = $('.loading-sequence')
 
 Tabletop.init( { key: 'https://docs.google.com/spreadsheets/d/1B2CVh-akXsNCnyP8UK3wMIwJEAFAAQqqnWI3XSlxRME/pubhtml',
  callback: function(data, tabletop) {
@@ -16,12 +15,13 @@ Tabletop.init( { key: 'https://docs.google.com/spreadsheets/d/1B2CVh-akXsNCnyP8U
      })
     //$articleCount.text('There are ' + _.random(100000, 10000000) + ' stories at your fingertips.')
     //$articleCount.text('There are ' + articles.length + ' stories at your fingertips.')
-    $articleCount.html('There are <span class="count-num">' + (articles.length * 155) + '</span> stories at your fingertips.')
+    $articleCount.html('There are <span class="count-num">' + (articles.length * 9746) + '</span> stories at your fingertips.')
 
     makeExamples()
 
     $('body').show(400)
-
+    $loadingSequence.remove();
+    $firstQuestionStep.addClass('is-active')
     console.log('articles', articles)
  },
  simpleSheet: true } )
