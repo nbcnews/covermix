@@ -89,6 +89,9 @@ function makeArticleList() {
   var articleList = d3.select('#relevant-articles')
   articleList.html('')
 
+  var listArticles = articles
+  if(listArticles.length > 5) { listArticles.length = 5}
+
   var articleEnter = articleList.selectAll('li')
     .data(articles)
     .enter().append('li')
