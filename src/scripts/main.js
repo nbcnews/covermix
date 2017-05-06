@@ -3,6 +3,11 @@ var articles;
 var $firstQuestionStep = $('.question-step.is-first')
 var $articleCount = $('#article-count')
 var $loadingSequence = $('.loading-sequence')
+var $resetBtn = $('.reset')
+
+$resetBtn.on('click', function(){
+  location.reload()
+})
 
 Tabletop.init( { key: 'https://docs.google.com/spreadsheets/d/1B2CVh-akXsNCnyP8UK3wMIwJEAFAAQqqnWI3XSlxRME/pubhtml',
  callback: function(data, tabletop) {
