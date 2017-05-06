@@ -16,7 +16,7 @@ Tabletop.init( { key: 'https://docs.google.com/spreadsheets/d/1B2CVh-akXsNCnyP8U
      })
     //$articleCount.text('There are ' + _.random(100000, 10000000) + ' stories at your fingertips.')
     //$articleCount.text('There are ' + articles.length + ' stories at your fingertips.')
-    $articleCount.text('There are ' + (articles.length * 155) + ' stories at your fingertips.')
+    $articleCount.html('There are <span class="count-num">' + (articles.length * 155) + '</span> stories at your fingertips.')
 
     makeExamples()
 
@@ -78,7 +78,7 @@ $('.question-step button').on('click', function(){
     console.log('next questionParent', questionParent.next())
 
     makeExamples()
-    $articleCount.text('There are ' + taggedArticles.length + ' stories at your fingertips.')
+    $articleCount.html('There are <span class="count-num">' + taggedArticles.length + '</span> stories at your fingertips.')
   }
   else {
     el.attr('disabled', 'disabled')

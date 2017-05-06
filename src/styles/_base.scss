@@ -92,7 +92,6 @@ a {
 
 .question-step {
   display: none;
-  margin-bottom: $gutter;
 
   h2 {
     margin-bottom: $gutter;
@@ -110,11 +109,25 @@ a {
 }
 
 #relevant-articles {
-  margin-top: 1.5em;
+  list-style: none;
+
+  li {
+    border-bottom: 1px solid $almost-white;
+    padding: $gutter;
+  }
 }
 
 #article-count,
 #custom-sentence,
 #custom-sentence p {
   display: inline;
+}
+
+.sentence-wrapper {
+  padding: $gutter;
+  background-color: $almost-white;
+}
+
+.count-num {
+  font-weight: bold;
 }
