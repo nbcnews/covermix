@@ -4,18 +4,18 @@ var $firstQuestionStep = $('.question-step:first-of-type')
 $firstQuestionStep.addClass('is-active')
 
 Tabletop.init( { key: 'https://docs.google.com/spreadsheets/d/1B2CVh-akXsNCnyP8UK3wMIwJEAFAAQqqnWI3XSlxRME/pubhtml',
-                   callback: function(data, tabletop) {
-                       articles = data
+ callback: function(data, tabletop) {
+     articles = data
 
-                       articles.forEach(function(article,i){
-                         var articleTagString = article.tags
-                         var articleTagArray = article.tags.split(' ')
-                         articles[i].tags = articleTagArray
-                       })
+     articles.forEach(function(article,i){
+       var articleTagString = article.tags
+       var articleTagArray = article.tags.split(' ')
+       articles[i].tags = articleTagArray
+     })
 
-                      console.log('articles', articles)
-                   },
-                   simpleSheet: true } )
+    console.log('articles', articles)
+ },
+ simpleSheet: true } )
 
 $('.question-step button').on('click', function(){
   var el = $(this)
