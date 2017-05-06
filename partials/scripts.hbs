@@ -5,7 +5,7 @@
  <script>
        // Adaptive iframe snippet for NBCNews.com
        // note: requires jQuery
-
+$( document ).ready(function() {
         function iframeResize() {
             var height = $('body').height();
             var location = document.location.href;
@@ -17,6 +17,9 @@
         $(function() {
            iframeResize();
         });
+});
+
+
 </script>
 {{#if analytics.google.trackingId}}
 <script>
