@@ -12,6 +12,7 @@ html {
 
 body {
   font-family: $font-sans;
+  padding: $gutter * 2;
 }
 
 .wrapper {
@@ -67,7 +68,9 @@ a {
   }
 
   button {
-    background-color: transparent;
+    @include arrow('right','center', 5px, $almost-white);
+
+    background-color: $almost-white;
     border: 0;
     border-top: 0;
     border-bottom: 0;
