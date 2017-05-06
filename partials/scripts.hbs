@@ -2,6 +2,22 @@
 <script src="{{this}}" charset="utf-8"></script>
 {{/each}}
 <script src="{{assetPath}}scripts/{{#if devBuild}}main.js{{else}}main.{{webpackStats.hash}}.js{{/if}}"></script>
+ <script>
+       // Adaptive iframe snippet for NBCNews.com
+       // note: requires jQuery
+
+        function iframeResize() {
+            var height = $('body').height();
+            var location = document.location.href;
+            window.parent.postMessage(["setHeight", height, location], "*");
+        }
+
+        $(window).resize(iframeResize);
+
+        $(function() {
+           iframeResize();
+        });
+</script>
 {{#if analytics.google.trackingId}}
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
