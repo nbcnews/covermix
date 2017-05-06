@@ -2,15 +2,9 @@
 <html class="no-js">
   {{> head}}
   <body class="{{#if paths.dir}}{{stem paths.href}}-page{{else}}{{paths.name}}-page{{/if}}{{#if paths.dir}} {{segments paths.dir '0' '1'}}-route{{/if}}">
-    <div id="article-count">
-</div>
-<div id="custom-sentence">
-</div>
 <div id="tags"><h4>Tags: </h4>
 </div>
-
 <div id="cover-walkthrough">
-
   <div class="question-step">
     <h2>I only have</h2>
     <div class="questions">
@@ -20,7 +14,6 @@
     <div class="question"><div><button data-target-tags="1billionwords">All day</button></div> <div><a href="#">More info more info</a></div></div>
     </div>
   </div>
-
   <div class="question-step">
     <h2>I'm in the mood for something</h2>
     <div class="questions">
@@ -32,7 +25,6 @@
     <div class="question"><div><button data-target-tags="animals">That involves cute animals</button></div> <div><a href="#">More info more info</a></div></div>
     </div>
   </div>
-
   <div class="question-step">
     <h2>That I can</h2>
     <div class="questions">
@@ -42,10 +34,9 @@
     <div class="question"><div><button data-target-tags="dontcare">I don't care, just give me something</button></div> <div><a href="#">More info more info</a></div></div>
     </div>
   </div>
-
-
+  <div id="article-count"></div>
+  <div id="custom-sentence"></div>
 </div>
-
 <div id="relevant-articles">
 </div>
 {{> @partial-block }}

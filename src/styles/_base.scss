@@ -12,22 +12,6 @@ html {
 
 body {
   font-family: $font-sans;
-  padding: 2em;
-  max-width: 620px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-#custom-sentence {
-  padding: 1em;
-  background-color: #ccc;
-  font-size: 1.2em;
-  margin-bottom: 1em;
-  margin-top: 1em;
-}
-
-#article-count {
-  text-align: center;
 }
 
 #tags {
@@ -54,10 +38,6 @@ a {
   &:hover {
     text-decoration: underline;
   }
-}
-
-.question-step {
-  margin-bottom: 90px;
 }
 
 .questions {
@@ -103,9 +83,12 @@ a {
   content: "...";
 }
 
-#relevant-articles li{
-  list-style-type: none;
-  border-bottom: 1px dotted rgba(100,100,100,0.2);
-  margin-bottom: 0.5em;
-  margin-top: 0.8em;
+#relevant-articles {
+  margin-top: 100px;
+}
+
+#article-count,
+#custom-sentence,
+#custom-sentence p {
+  display: inline;
 }

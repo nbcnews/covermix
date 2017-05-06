@@ -1,5 +1,6 @@
 var articles;
 var $firstQuestionStep = $('.question-step:first-of-type')
+var $articleCount = $('#article-count')
 
 $firstQuestionStep.addClass('is-active')
 
@@ -12,7 +13,7 @@ Tabletop.init( { key: 'https://docs.google.com/spreadsheets/d/1B2CVh-akXsNCnyP8U
        var articleTagArray = article.tags.split(' ')
        articles[i].tags = articleTagArray
      })
-
+    $articleCount.text('There are ' + articles.length + ' stories at your fingertips.')
     console.log('articles', articles)
  },
  simpleSheet: true } )
@@ -34,9 +35,8 @@ $('.question-step button').on('click', function(){
 
   $('#tags').append(selectedTags + ' + ')
 
-  questionParent.find('button').attr('disabled','disabled');
-
-  var taggedArticles = findTaggedArticles(selectedTags);
+  questionParent.find('button').attr('disabled','disabled')
+  var taggedArticles = findTaggedArticles(selectedTags)
   articles = taggedArticles;
 
   //$('#relevant-articles').append('<code>'+JSON.stringify(articles)+'</code>')
@@ -52,8 +52,9 @@ $('.question-step button').on('click', function(){
       return '<a href="' + d.URL + '">' + d.Title + '</a> <small style="color: #CCC">' + JSON.stringify(d.tags) + '</small>';
     })
 
-  $('#article-count').text(taggedArticles.length + ' relevant articles')
+  $articleCount.text('There are ' + taggedArticles.length + ' stories at your fingertips.')
 })
+
 
 /*
 articles = [
