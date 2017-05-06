@@ -31,9 +31,14 @@ Tabletop.init( { key: 'https://docs.google.com/spreadsheets/d/1B2CVh-akXsNCnyP8U
      $exampleLink = $el.parent().parent().find('a')
 
      var exampleArticle = findTaggedArticles(buttonTag)[0]
-
-     $exampleLink.attr('href', exampleArticle.URL)
-     $exampleLink.text(exampleArticle.Title)
+     if(exampleArticle == undefined) {
+       $exampleLink.attr('href', '#')
+       $exampleLink.text('')
+     }
+     else {
+       $exampleLink.attr('href', exampleArticle.URL)
+       $exampleLink.text(exampleArticle.Title)
+     }
 
      //console.log('exampleLink', $exampleLink)
    })
@@ -48,10 +53,6 @@ $('.question-step button').on('click', function(){
   var selectedButtonText = el.text();
   var selectedTags = el.attr('data-target-tags')
 
-  questionParent.removeClass('is-active')
-  questionParent.next().addClass('is-active')
-
-
   $('#custom-sentence').append('<p>'+title + ' <strong>' + selectedButtonText.toLowerCase()+'</strong>. </p>')
 
   $('#tags').append(selectedTags + ' + ')
@@ -60,6 +61,9 @@ $('.question-step button').on('click', function(){
   var taggedArticles = findTaggedArticles(selectedTags)
   if(taggedArticles.length !== 0) {
     articles = taggedArticles;
+
+    questionParent.removeClass('is-active')
+    questionParent.next().addClass('is-active')
 
     //$('#relevant-articles').append('<code>'+JSON.stringify(articles)+'</code>')
 
@@ -74,6 +78,7 @@ $('.question-step button').on('click', function(){
         return '<a href="' + d.URL + '">' + d.Title + '</a> <small style="color: #CCC">' + JSON.stringify(d.tags) + '</small>';
       })
 
+    makeExamples()
     $articleCount.text('There are ' + taggedArticles.length + ' stories at your fingertips.')
   }
   else {
