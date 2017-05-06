@@ -12,13 +12,16 @@ html {
 
 body {
   font-family: $font-sans;
-  padding: $gutter * 2;
 }
 
 .wrapper {
   max-width: 640px;
   margin-left: auto;
   margin-right: auto;
+}
+
+#cover-walkthrough {
+  padding-bottom: $gutter * 2;
 }
 
 #tags {
