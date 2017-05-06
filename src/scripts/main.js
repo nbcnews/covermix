@@ -14,7 +14,7 @@ Tabletop.init( { key: 'https://docs.google.com/spreadsheets/d/1B2CVh-akXsNCnyP8U
        articles[i].tags = articleTagArray
      })
 
-    $articleCount.text('There are ' + articles.length + ' stories at your fingertips.')
+    $articleCount.text('There are ' + (articles.length * 155) + ' stories at your fingertips.')
 
     makeExamples()
 
