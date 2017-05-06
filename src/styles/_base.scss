@@ -40,6 +40,7 @@ body {
 a {
   color: #000552;
   text-decoration: none;
+  font-size: 14px;
 
   &:hover {
     text-decoration: underline;
@@ -48,13 +49,16 @@ a {
 
 .questions {
   border-top: 1px solid $almost-white;
-  border-right: 1px solid $almost-white;
 }
 
 .question {
   display: flex;
   border-bottom: 1px solid $almost-white;
   align-items: center;
+
+  div {
+    padding: $gutter;
+  }
 
   div:first-child {
     padding-right: $gutter;
@@ -64,18 +68,22 @@ a {
 
   button {
     background-color: transparent;
-    border: 1px solid $almost-white;
+    border: 0;
     border-top: 0;
     border-bottom: 0;
     padding: $gutter;
     width: 100%;
     cursor: pointer;
+    text-align: left;
+    position: relative;
 
     &:disabled {
       opacity: 0.2;
     }
 
     &:hover {
+      @include arrow('right','center', 5px, $blue);
+
       background-color: $blue;
       color: #fff;
     }
@@ -84,20 +92,21 @@ a {
 
 .question-step {
   display: none;
-  margin: 1em 0;
+  margin-bottom: $gutter;
 
   h2 {
-    font-size: 1.3em;
-    margin: 1em 0;
+    margin-bottom: $gutter;
+    font-size: 14px;
+    font-weight: bold;
+
+    &::after {
+      content: "...";
+    }
   }
 }
 
 .is-active {
   display: block;
-}
-
-.question-step h2::after {
-  content: "...";
 }
 
 #relevant-articles {
