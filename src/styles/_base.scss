@@ -71,6 +71,10 @@ a {
     width: 100%;
     cursor: pointer;
 
+    &:disabled {
+      opacity: 0.2;
+    }
+
     &:hover {
       background-color: $blue;
       color: #fff;
