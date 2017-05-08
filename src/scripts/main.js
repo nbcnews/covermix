@@ -12,14 +12,12 @@ $resetBtn.on('click', function(){
 Tabletop.init( { key: 'https://docs.google.com/spreadsheets/d/1B2CVh-akXsNCnyP8UK3wMIwJEAFAAQqqnWI3XSlxRME/pubhtml',
  callback: function(data, tabletop) {
      articles = data
-
      articles.forEach(function(article,i){
        var articleTagString = article.tags
        var articleTagArray = article.tags.split(' ')
        articles[i].tags = articleTagArray
      })
-    //$articleCount.text('There are ' + _.random(100000, 10000000) + ' stories at your fingertips.')
-    //$articleCount.text('There are ' + articles.length + ' stories at your fingertips.')
+
     $articleCount.html('There are <span class="count-num">' + (articles.length * 9746) + '</span> stories at your fingertips.')
 
     makeExamples()
@@ -27,9 +25,10 @@ Tabletop.init( { key: 'https://docs.google.com/spreadsheets/d/1B2CVh-akXsNCnyP8U
     $('body').show(400)
     $loadingSequence.remove();
     $firstQuestionStep.addClass('is-active')
-    console.log('articles', articles)
  },
- simpleSheet: true } )
+  simpleSheet: true,
+  proxy: 'https://newsprojects.s3.amazonaws.com'
+})
 
  function makeExamples() {
    $('.question-step button').each(function(){
@@ -46,12 +45,10 @@ Tabletop.init( { key: 'https://docs.google.com/spreadsheets/d/1B2CVh-akXsNCnyP8U
        $el.parent().find('button').attr('disabled', 'disabled')
      }
      else {
-       $exampleLink.attr('href', exampleArticle.URL)
-        $exampleLink.attr('target', '_blank')
-       $exampleLink.text(exampleArticle.Title)
+      $exampleLink.attr('href', exampleArticle.url)
+      $exampleLink.attr('target', '_blank')
+      $exampleLink.text(exampleArticle.title)
      }
-
-     //console.log('exampleLink', $exampleLink)
    })
  }
 
@@ -59,8 +56,6 @@ $('.question-step button').on('click', function(){
   var el = $(this)
   var questionParent = el.parents('.question-step')
   var title = questionParent.find('h2').text()
-  console.log('title', title)
-  //var title = $('h2', questionStep).text();
   var selectedButtonText = el.text();
   var selectedTags = el.attr('data-target-tags')
 
@@ -72,7 +67,7 @@ $('.question-step button').on('click', function(){
     // This is useful if you want to show all the questions at once
     //questionParent.find('button').attr('disabled','disabled')
     $('#tags').append(selectedTags + ' + ')
-    $('#custom-sentence').append('<p>'+title + ' <strong>' + selectedButtonText.toLowerCase()+'</strong>. </p>')
+    $('#custom-sentence').append('<p>'+ title + ' <strong>' + selectedButtonText.toLowerCase()+'</strong>. </p>')
 
     questionParent.removeClass('is-active')
     questionParent.next().addClass('is-active')
@@ -80,8 +75,6 @@ $('.question-step button').on('click', function(){
     if(!questionParent.next().hasClass('question-step')) {
       makeArticleList()
     }
-
-    console.log('next questionParent', questionParent.next())
 
     makeExamples()
     $articleCount.html('There are <span class="count-num">' + taggedArticles.length + '</span> stories at your fingertips.')
@@ -102,26 +95,9 @@ function makeArticleList() {
     .data(articles)
     .enter().append('li')
     .html(function(d){
-      return '<a href="' + d.URL + '">' + d.Title + '</a> <small style="color: #CCC; display: none;">' + JSON.stringify(d.tags) + '</small>';
+      return '<a target="_blank" href="' + d.url + '">' + d.title + '</a> <small style="color: #CCC; display: none;">' + JSON.stringify(d.tags) + '</small>';
   })
 }
-
-/*
-articles = [
-  {
-    title: "Cat Bites Dog"
-    ,tags: ['2m', 'cute', 'video', 'notrump']
-  }
-  ,{
-    title: "Trump Bites Dog"
-    ,tags: ['5m', 'trump', 'article']
-  }
-  ,{
-    title: "Watch This 24hr Cat Livestream"
-    ,tags: ['60m+', 'cute', 'notrump']
-  }
-]
-*/
 
 function findTaggedArticles(tag) {
   var relevantArticles = []
